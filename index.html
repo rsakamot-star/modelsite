@@ -1,54 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8" />
-        <link
-          rel="stylesheet"
-          href="https://pyscript.net/releases/2024.11.1/core.css"
-        />
-        <script
-          type="module"
-          src="https://pyscript.net/releases/2024.11.1/core.js"></script>
-    </head>
-    <h1>CRsGAME Scoreboard</h1>
-    <button
-    onclick="window.open('https://rsakamot-star.github.io/CRsGAME/')"
-    style="display:block;
-    position:relative;
-    width:200px;
-    height:30px;
-    text-align:center;
-    text-decoration:none;
-    color:rgb(0, 150, 200);
-    background: black;
-    box-shadow: 0px 3px 3px black;"
-    ><strong>START GAME</strong></button>
-    <h3>更新履歴</h3>
-    <h4>2024/12/20 日付が変わった時にランキングがリセットされるのを改善しました</h4>
-    <h4>2024/12/25 最新の生成された宇宙線の天頂角、エネルギー分布の表示、夕方の追加</h4>
+<head>
+    <meta charset="UTF-8">
+    <title>GET メソッドによるパラメータ渡し</title>
+</head>
+<body>
     <h1>GETメソッドによるパラメータ渡し</h1>
-        <?php
-            $arg1 = $_GET['arg1'];
-            echo $arg1;
-        ?>
-        <p><a href = "../index.html">前に戻る</p>
-    <body>
-        <py-config>
-            packages = ["numpy","micropip"]
-        </py-config>
-        <div id="text"></div>
-        <script type="py" terminal>
-            import micropip
-            import asyncio
-            async def install_and_run():
-                await micropip.install("scikit-learn")
-                import numpy as np
-                import sklearn
-                print("Hello, World!")
-                print("\n")
-                print(np.pi)
-            asyncio.create_task(install_and_run())
-        </script>
-    </body>
-</html>
+    <p id="param-value"></p>
 
+    <script>
+        // URL のクエリパラメータを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const arg1 = urlParams.get('arg1');  // 'arg1' の値を取得
+
+        // 取得した値を表示
+        if (arg1) {
+            document.getElementById('param-value').textContent = "arg1 の値: " + arg1;
+        } else {
+            document.getElementById('param-value').textContent = "arg1 は指定されていません。";
+        }
+    </script>
+</body>
+</html>
